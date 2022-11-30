@@ -5329,7 +5329,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   mounted: function mounted() {
@@ -28172,7 +28171,7 @@ var staticRenderFns = [
             _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
               _vm._v(
-                "\n                    I'm an example component modify by Mack.\n                    I'm in the new computer system.\n                "
+                "\n                    I'm an example component modify by Mack.\n                "
               ),
             ]),
           ]),
