@@ -25,4 +25,10 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function post($postId)
+    {
+        $post = Post::find($postId);
+        return view('post', ['post' => $post]);
+    }
 }

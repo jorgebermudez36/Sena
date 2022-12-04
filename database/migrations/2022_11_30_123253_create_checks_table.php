@@ -30,12 +30,7 @@ class CreateChecksTable extends Migration
             $table->foreignId('nameE_id')->constrained('employes');
         });
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+    
     public function down()
     {
         Schema::dropIfExists('checks');

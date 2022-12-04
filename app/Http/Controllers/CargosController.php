@@ -15,6 +15,25 @@ class CargosController extends Controller
      * @param  Request  $request
      * @return Response
      */
+    public function index()
+    {
+        $cargos = Cargos::all();
+        $array = array(
+            'status' => 200,
+            'msj' => 'consulta exitosa'
+        );
+        return [
+            'data' => $cargos,
+            'response' => $array
+        ];
+    }
+
+    public function select()
+    {
+        $cargos = Cargos::select('id', 'cargo')->get();
+        return ['data' => $cargos];
+    }
+
     public function load(Request $request)
     {
         $cargo = new cargos;
