@@ -83,7 +83,7 @@
                                 data-bs-target="#exampleModal">Agregar</button>
                         </div>
                         <div class="d-grid gap-2 col-4 mx-auto">
-                            <button class="btn btn-dark" type="button">Guardar</button>
+                            <button class="btn btn-dark" type="submit">Guardar</button>
                         </div>
                     </form>
                 </div>
@@ -93,7 +93,7 @@
         <section class="container d-flex px-3 py-2">
             <div class="col">
     
-                <table class="table text-center text-light">
+                <table class="table text-center text-success">
                     <thead>
                         <tr>
                             <th>Cantidad</th>
@@ -107,15 +107,8 @@
         </section>
     </main>
     
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Buscar Producto</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
+    <!-- Modal 
+               <div class="modal-body">
                     <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-2">
@@ -143,15 +136,27 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Agregar</button>
                     <button type="button" class="btn btn-dark">Guardar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
+                </div>-->
+        
 </body>
 </html>
 </template>
 
-<scripts>
+<script>
+import axios from "axios"
+export default {
+    data() {
+    
+    }
+}
 
-</scripts>
+
+
+
+</script>
+
+<style>
+
+
+
+</style>

@@ -36,10 +36,7 @@ class EmployesController extends Controller
 
     public function load(Request $request)
     {
-        // Validate the request...
-
         $employe = new Employes;
-
         $employe->dniE = $request->ident;
         $employe->nameE = $request->name;
         $employe->surnameE = $request->surname;
@@ -52,8 +49,6 @@ class EmployesController extends Controller
 
     public function update(Request $request)
     {
-        // Validate the request...
-
         $employe = Employes::find($request->id);
         $employe->dniE = $request->ident;
         $employe->nameE = $request->name;

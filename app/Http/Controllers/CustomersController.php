@@ -41,7 +41,6 @@ class CustomersController extends Controller
 
         $customer->dniC = $request->ident;
         $customer->nameC = $request->name;
-        $customer->surnameC = $request->surname;
         $customer->email = $request->mail;
         $customer->cellphone = $request->phone;
         $customer->address = $request->address;
@@ -51,13 +50,10 @@ class CustomersController extends Controller
 
     public function update(Request $request)
     {
-        // Validate the request...
-
         $customer = Customers::find($request->id);
 
         $customer->dniC = $request->ident;
         $customer->nameC = $request->name;
-        $customer->surnameC = $request->surname;
         $customer->email = $request->mail;
         $customer->cellphone = $request->phone;
         $customer->address = $request->address;

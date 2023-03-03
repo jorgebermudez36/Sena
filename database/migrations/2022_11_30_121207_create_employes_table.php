@@ -14,6 +14,7 @@ class CreateEmployesTable extends Migration
     public function up()
     {
         Schema::create('employes', function (Blueprint $table) {
+
             $table->id();
             $table->string('dniE', 100);
             $table->string('nameE', 100);
@@ -23,7 +24,7 @@ class CreateEmployesTable extends Migration
             $table->string('phone', 100);
             $table->timestamps();
 
-            $table->foreignId('cargo_id')->constrained('cargos');
+            $table->foreignId('cargo_id')->constrained('cargos')->onDelete("cascade");
         });
     }
 

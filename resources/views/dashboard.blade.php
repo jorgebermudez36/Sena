@@ -1,12 +1,14 @@
-@extends('layouts.menu')
+@extends('layouts.app')
 
 @if(Auth::check())
 
 @section('content')
+
     <div id="app">
-        <employe-component></employe-component>
+    <dashboard-component></dashboard-component>
+   
     </div>
+    
 @endsection
 
 @endif
-

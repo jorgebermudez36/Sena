@@ -3,46 +3,30 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
+    
+  <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://unpkg.com/vue-router@4"></script>
+    
+    
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet"> 
+    <script src="https://kit.fontawesome.com/3eaa50f07f.js" crossorigin="anonymous"></script>
+   
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
-<body>
+<body>    
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+      <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -96,7 +80,7 @@
             </div>
         </nav>
 
-    <div class="container" style="background-color: aqua">
+   
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <symbol id="home" viewBox="0 0 16 16">
       <path
@@ -127,9 +111,10 @@
         d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z" />
     </symbol>
   </svg>
-
+@if(Auth::check())
     <header class="header">
-    <div class="container px-3 py-2" id="header">
+     <div class="container" style="background-color: aqua">
+     <div class="container px-3 py-2" id="header">
       <div class="container ">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
           <img  src="{{ asset('img/logoPtoMck.png') }}" rel="icon" type="image" 
@@ -139,7 +124,7 @@
 
           <ul class="nav col-12 col-lg-auto my-2 justify-content-center my-md-0 text-small">
             <li>
-              <a href="C:\Users\JORGE\Mack\SENA\Tecnología\Programación\virtual_Studio\ADSI Sesiones\IE Diseño Desarrollo Interfaz Web\main\header.html"
+              <a href="{{ url('/home') }}"
                 class="nav-link text-black">
                 <svg class="bi d-block mx-auto mb-1" width="24" height="24">
                   <use xlink:href="#home" />
@@ -149,7 +134,7 @@
             </li>
 
             <li>
-              <a href="/factura/check.html" class="nav-link text-dark">
+              <a href="{{ url('/factura') }}" class="nav-link text-dark">
                 <svg class="bi d-block mx-auto mb-1" width="24" height="24">
                   <use xlink:href="#table" />
                 </svg>
@@ -157,7 +142,7 @@
               </a>
             </li>
             <li>
-              <a href="/inventario/inventario.html" class="nav-link text-dark">
+              <a href="{{ url('/inventario') }}" class="nav-link text-dark">
                 <svg class="bi d-block mx-auto mb-1" width="24" height="24">
                   <use xlink:href="#grid" />
                 </svg>
@@ -165,7 +150,7 @@
               </a>
             </li>
             <li>
-              <a href="/Nueva Cliente/newClient.html" class="nav-link text-dark">
+              <a href="{{ url('/cliente') }}" class="nav-link text-dark">
                 <svg class="bi d-block mx-auto mb-1" width="24" height="24">
                   <use xlink:href="#people-circle" />
                 </svg>
@@ -173,7 +158,7 @@
               </a>
             </li>
             <li>
-              <a href="/Nueva Empleado/newEmpl.html" class="nav-link text-dark">
+              <a href="{{ url('/employe') }}" class="nav-link text-dark">
                 <svg class="bi d-block mx-auto mb-1" width="24" height="24">
                   <use xlink:href="#people-circle" />
                 </svg>
@@ -181,15 +166,23 @@
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link text-dark">
+              <a href="{{ url('/dailybook') }}" class="nav-link text-dark">
                 <svg class="bi d-block mx-auto mb-1" width="24" height="24">
                   <use xlink:href="#speedometer2" />
                 </svg>
-                Reportes
+                Libro
               </a>
             </li>
             <li>
-              <a href="#" class="nav-link text-dark">
+              <a href="{{ url('/dashboard') }}" class="nav-link text-dark">
+                <svg class="bi d-block mx-auto mb-1" width="24" height="24">
+                  <use xlink:href="#speedometer2" />
+                </svg>
+                Resportes
+              </a>
+            </li>
+            <li>
+              <a href="{{ url('/cargo') }}" class="nav-link text-dark">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                   class="bi d-block mx-auto mb-1" viewBox="0 0 16 16">
                   <path d="M6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
@@ -203,6 +196,7 @@
         </div>
       </div>
     </div>
+    @endif
   </header>    
 
         <main class="py-4">
@@ -210,5 +204,8 @@
         </main>
     </div>
 </div>
+
+
 </body>
 </html>
+

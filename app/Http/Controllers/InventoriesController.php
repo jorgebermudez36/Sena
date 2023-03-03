@@ -35,9 +35,7 @@ class InventoriesController extends Controller
 
     public function load(Request $request)
     {
-        // Validate the request...
         $inventories = new Inventories;
-
         $inventories->nameItem = $request->Item;
         $inventories->quantity = $request->Cantidad;
         $inventories->appearance = $request->presentacion;
@@ -53,8 +51,6 @@ class InventoriesController extends Controller
 
     public function update(Request $request)
     {
-        // Validate the request...
-
         $inventories = Inventories::find($request->id);
         $inventories->nameItem = $request->Item;
         $inventories->quantity = $request->Cantidad;

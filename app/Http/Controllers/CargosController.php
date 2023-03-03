@@ -15,46 +15,64 @@ class CargosController extends Controller
      * @param  Request  $request
      * @return Response
      */
+    /*public function post($postId)
+     {
+        $post = Post::find($postId);
+        return view('post', ['post' => $post]);
+     }*/
+
     public function index()
     {
         $cargos = Cargos::all();
-        $array = array(
-            'status' => 200,
-            'msj' => 'consulta exitosa'
-        );
-        return [
-            'data' => $cargos,
-            'response' => $array
-        ];
+        return response()->json($cargos);
     }
 
-    public function select()
+    public function store(Request $request)
     {
-        $cargos = Cargos::select('id', 'cargo')->get();
-        return ['data' => $cargos];
-    }
+        $request->validate([
+            'cargo' => ['required'],
+            'desc' => ['required']
+        ]);
 
-    public function load(Request $request)
-    {
-        $cargo = new cargos;
+        $cargo = new Cargos;
 
-        $cargo->cargo = $request->name;
+        $cargo->cargo = $request->cargo;
         $cargo->descripcion = $request->desc;
         $cargo->save();
     }
 
     public function update(Request $request)
     {
-        $cargo = cargos::find($request->id);
+        $request->validate([
+            'cargo' => ['required'],
+            'desc' => ['required']
+        ]);
 
-        $cargo->cargo = $request->name;
+        $cargo = Cargos::find($request->id);
+        $cargo->cargo = $request->cargo;
         $cargo->descripcion = $request->desc;
         $cargo->save();
+
+        return response()->json(['message' => 'cargo update successfully']);
+        /* return view('showcarg'); */
     }
 
-    public function delete(Request $request)
+    public function destroy(Request $request)
     {
-        $cargo = cargos::find($request->id);
+        $cargo = Cargos::find($request->id);
         $cargo->delete();
+        return ['message' => "Cargo deleted"];
+        return view('showcarg');
+    }
+
+    public function select()
+    {
+        $cargo = Cargos::select('id')->get();
+        return ['data' => $cargo];
+    }
+
+    public function show()
+    {
+        return response()->json([]);
     }
 }

@@ -45,15 +45,31 @@ Route::get('/dailybook', function () {
     return view('dailybook');
 });
 
-//Route Cargos
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+
+Route::get('/showcarg', function () {
+    return view('showcarg');
+});
+
+Route::get('/editcarg', function () {
+    return view('editcarg');
+});
+
+
 
 Auth::routes();
 
-Route::get('/api/cargos/index', [App\Http\Controllers\CargosController::class, 'index'])->name('index');
-Route::get('/api/cargos/select', [App\Http\Controllers\CargosController::class, 'select'])->name('select');
-Route::post('/api/cargos/cargar', [App\Http\Controllers\CargosController::class, 'load'])->name('cargar');
-Route::put('/api/cargos/actualizar', [App\Http\Controllers\CargosController::class, 'update'])->name('actualizar');
-Route::delete('/api/cargos/borrar', [App\Http\Controllers\CargosController::class, 'delete'])->name('borrar');
+//Route Cargos
+
+Route::get('/api/cargos/index/{id}', [App\Http\Controllers\CargosController::class, 'index'])->name('showcargos');
+Route::post('/api/cargos/createcargos', [App\Http\Controllers\CargosController::class, 'store'])->name('createcargos');
+Route::get('/api/cargos/select/', [App\Http\Controllers\CargosController::class, 'select'])->name('select');
+
+Route::put('/api/cargos/update/', [App\Http\Controllers\CargosController::class, 'update'])->name('editcarg');
+Route::delete('api/cargos/borrar/{id}', [App\Http\Controllers\CargosController::class, 'destroy'])->name('borrar');
+
 
 //Routescustomer
 
@@ -68,7 +84,7 @@ Route::get('/api/employe/index', [App\Http\Controllers\EmployesController::class
 Route::get('/api/employe/select', [App\Http\Controllers\EmployesController::class, 'select'])->name('select');
 Route::post('/api/employe/cargar', [App\Http\Controllers\EmployesController::class, 'load'])->name('cargar');
 Route::put('/api/employe/actualizar', [App\Http\Controllers\EmployesController::class, 'update'])->name('actualizar');
-Route::delete('/api/employe/borrar', [App\Http\Controllers\EmployesController::class, 'delete'])->name('borrar');
+Route::delete('/api/employe/borrar/', [App\Http\Controllers\EmployesController::class, 'delete'])->name('borrar');
 
 //Routeschecks
 Route::get('/api/factura/index', [App\Http\Controllers\ChecksController::class, 'index'])->name('index');
@@ -91,4 +107,13 @@ Route::post('/api/dailybook/cargar', [App\Http\Controllers\DailybookController::
 Route::put('/api/dailybook/actualizar', [App\Http\Controllers\DailybookController::class, 'update'])->name('actualizar');
 Route::delete('/api/dailybook/borrar', [App\Http\Controllers\DailybookController::class, 'delete'])->name('borrar');
 
+//RouteDashboard
+Route::get('/api/dashboard/index', [App\Http\Controllers\DashboardController::class, 'index'])->name('index');
+
+
+
 Route::post('/post/{postId}', [App\Http\Controllers\HomeController::class, 'post'])->name('postImagen');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -14,6 +14,11 @@ class ChecksController extends Controller
      * @param  Request  $request
      * @return Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $checks = Checks::all();
@@ -35,10 +40,7 @@ class ChecksController extends Controller
 
     public function load(Request $request)
     {
-        // Validate the request...
-
         $checks = new Checks;
-
         $checks->sequence = $request->consec;
         $checks->qtyItem = $request->cantItem;
         $checks->subtotal = $request->subtotal;
@@ -57,8 +59,6 @@ class ChecksController extends Controller
 
     public function update(Request $request)
     {
-        // Validate the request...
-
         $checks = Checks::find($request->id);
         $checks->sequence = $request->consec;
         $checks->qtyItem = $request->cantItem;

@@ -4,7 +4,7 @@
 
 @section('content')
     <div id="app">
-        <inventario-component></inventario-component>
+        <editcarg-component></editcarg-component>
     </div>
 @endsection
 
