@@ -25,18 +25,15 @@
                             <td>{{ cargo.descripcion }}</td>
                             <td>
                                 <a
-                                    :to="(name = 'editcarg')"
-                                    type="submit"
-                                    class="btn btn-warning fas fa-pencil"
-                                    v-on:click="edit"
-                                >
-                                </a
-                                >&nbsp;
+                                    href="editcarg/"
+                                    class="btn btn-warning"><i class="fas fa-pencil"></i>
+                                </a>
+                                &nbsp;
                                 <a
-                                    type="submit"
-                                    class="btn btn-danger fas fa-trash"
+                                    type="buttopn"
                                     @click="eliminar(cargo.id)"
-                                >
+                                    class="btn btn-danger">
+                                    <i class="fas fa-trash"></i>
                                 </a>
                             </td>
                         </tr>
@@ -51,21 +48,32 @@
 import axios from "axios";
 
 export default {
+    name:"cargos",
+
     data() {
         return {
             cargos: [],
             message: "",
         };
     },
+    
+    mounted() {
+        this.show();
+    },
+    
     methods: {
-        async show(id) {
+        async show() {
             await axios
-                .get("/api/cargos/index/" + id)
-                .then((response) => (this.cargos = response.data));
+                .get("/api/cargos/index/")
+                .then((response) => (this.cargos = response.data))
+                .catch((error) => {
+                console.log(error)
+                this.cargos = []});
+                
         },
         async eliminar(id) {
             await axios
-                .delete("/api/cargos/borrar/" + id)
+                .delete(`/api/cargos/borrar/${id}`)
                 .then((response) => {
                     this.message = response.data.message;
                         console.warn(response);
@@ -73,15 +81,7 @@ export default {
                 })
                 .catch((error) => error);
         },
-
-        async edit() {
-            await axios
-                .get("api/cargos/select/" + id)
-                .then((response) => console.log(response.data));
-        },
     },
-    mounted() {
-        this.show();
-    },
+    
 };
 </script>

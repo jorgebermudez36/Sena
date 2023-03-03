@@ -65,10 +65,14 @@
 
 <script>
 import axios from "axios"
+name:"editar-cargo"
 export default {
     data() {
        return {
-        cargo:{},
+        cargo:{
+            cargo:"",
+            desc:"",
+        },
         }
     },
     
@@ -77,14 +81,19 @@ export default {
     },
     
     methods: {
-         async show(id){
+         async show(){
             await axios
                 .get("/api/cargos/index/" + id)
                 .then(response=>{
-                    this.cargo = response.data.cargo;
-                    this.desc = response.data.desc;
+                    const {cargo, desc} = response.data;
+                    this.cargo.cargo = cargo;
+                    this.cargo.desc = desc;
                 })
-        },
+                .catch(error=>{
+                console.error(error);
+                })
+         },
+    
         
         async update() {
             await axios

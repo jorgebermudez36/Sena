@@ -63,7 +63,7 @@ Auth::routes();
 
 //Route Cargos
 
-Route::get('/api/cargos/index/{id}', [App\Http\Controllers\CargosController::class, 'index'])->name('showcargos');
+Route::get('/api/cargos/index/', [App\Http\Controllers\CargosController::class, 'index'])->name('showcargos');
 Route::post('/api/cargos/createcargos', [App\Http\Controllers\CargosController::class, 'store'])->name('createcargos');
 Route::get('/api/cargos/select/', [App\Http\Controllers\CargosController::class, 'select'])->name('select');
 

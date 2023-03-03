@@ -22,6 +22,7 @@ window.Vue = require('vue').default;
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('cargo-component', require('./components/Cargos/IndexComponent.vue').default);
 Vue.component('mostrarcarg-component', require('./components/Cargos/ShowComponent.vue').default);
+Vue.component('editcarg-component', require('./components/Cargos/EditComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
