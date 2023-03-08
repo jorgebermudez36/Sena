@@ -2,7 +2,7 @@
     <!DOCTYPE html>
     <html lang="es">
         <head>
-            <title>Cargos</title>
+            <title>Editar Cargos</title>
         </head>
 
         <body>
@@ -10,8 +10,9 @@
                 <div class="card card border-success">
                     <div class="card-header">Editar cargos</div>
                     <div class="card-body">
-                        <form @submit.prevent="update">
+                        <form @submit.prevent="update" id="cargoinput">
                             <div class="mb-3">
+                            <div class="form-group">
                                 <label for="cargoname" class="form-label"
                                     >Nombre</label
                                 >
@@ -31,7 +32,7 @@
                                     >Descripcion</label
                                 >
                                 <input
-                                    v-model="cargo.desc"
+                                    v-model="cargo.descripcion"
                                     type="text"
                                     class="form-control"
                                     name="descripcion"
@@ -43,7 +44,7 @@
                             <div
                                 class="d-grid gap-2 d-md-flex justify-content-center"
                             >
-                                <a
+                                <button
                                     type="submit"
                                     class="btn btn-outline-success"
                                     role="button"
@@ -51,7 +52,8 @@
                                     
                                 >
                                     Editar
-                                </a>
+                                </button>
+                            </div>
                             </div>
                         </form>
                     </div>
@@ -64,49 +66,46 @@
 </template>
 
 <script>
-import axios from "axios"
-name:"editar-cargo"
 export default {
     data() {
-       return {
-        cargo:{
-            cargo:"",
-            desc:"",
+        return {
+            cargos:[],
+            cargo: "",
+            desc: ""
+            }
         },
-        }
-    },
+    
     
     mounted() {
-        this.show();
-    },
-    
+        this.showcarg();
+        },
+
     methods: {
-         async show(){
-            await axios
-                .get("/api/cargos/index/" + id)
-                .then(response=>{
-                    const {cargo, desc} = response.data;
-                    this.cargo.cargo = cargo;
-                    this.cargo.desc = desc;
-                })
-                .catch(error=>{
-                console.error(error);
-                })
-         },
     
+        async showcarg() {
+        
+            axios.get(`/api/cargos/update/` + id)
+                /* .then(response => {this.cargos = response.data}) */
+                console.log(this.cargos)
+                /* .catch((error) => {
+                    console.log(error);
+                    this.cargos = []
+                }) */;
+        },
         
         async update() {
-            await axios
-                .put("/api/cargos/update/" + id)
-                .then(response => {
-                    this.$router.put('/api/cargos/update')
-                })
-                .catch(error => {
-                console.log(error.response.data);
-                })   
-        }
+        
+            axios.get(`/api/cargos/update/`)
+                /* .then(response => {this.cargos = response.data}) */
+                console.log(this.cargos)
+                /* .catch((error) => {
+                    console.log(error);
+                    this.cargos = []
+                }) */;
+        },
     }
 }
+  
 </script>
 
 <style>

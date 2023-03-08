@@ -7,6 +7,7 @@ use App\Models\cargos;
 use Illuminate\Http\Request;
 
 
+
 class CargosController extends Controller
 {
     /**
@@ -40,6 +41,14 @@ class CargosController extends Controller
         $cargo->descripcion = $request->desc;
         $cargo->save();
     }
+    
+    public function edit($id)
+    {
+        $cargo = Cargos::find($id);
+        return view('editcarg', ['cargo' => $cargo]);
+    }
+
+    
 
     public function update(Request $request)
     {
@@ -67,12 +76,17 @@ class CargosController extends Controller
 
     public function select()
     {
-        $cargo = Cargos::select('id')->get();
+        $cargo = Cargos::select()->get();
         return ['data' => $cargo];
     }
 
-    public function show()
+    public function show($id)
     {
-        return response()->json([]);
+        $cargo = Cargos::find($id);
+        return response()->json([$cargo]);
     }
+
+    
 }
+
+

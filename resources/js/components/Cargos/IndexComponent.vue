@@ -11,10 +11,8 @@
                     <div class="card-header">Crear cargos</div>
                     <div class="card-body">
                         <form @submit.prevent="load">
-                            <div class="mb-3">
-                                <label for="cargoname" class="form-label"
-                                    >Nombre</label
-                                >
+                            <div class="form-group mb-3">
+                                <label for="cargoname">Nombre</label>
                                 <input
                                     v-model="cargo"
                                     type="text"
@@ -82,10 +80,8 @@ export default {
                 desc: this.desc,
             };
 
-            axios.post("api/cargos/createcargos", json)
-            .then((data) => {
-                if (data.status == 200)
-                    alert("Guardado correctamente")              
+            axios.post("api/cargos/createcargos", json).then((data) => {
+                if (data.status == 200) alert("Guardado correctamente");
             });
         },
     },
